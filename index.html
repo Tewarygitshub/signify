@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-language Generator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign-language Generator <link rel="stylesheet" href="style.css">
+            <div id="google_element"></div>
+          <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+          <script type="text/javascript">
+          function loadGoogleTranslate(){
+            new google.translate.TranslateElement("google_element");
+          }
+        </script></h1>
+        <textarea id="inputText" rows="4" placeholder="Type your query here..."></textarea>
+        <button onclick="processInput()">Submit</button>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
