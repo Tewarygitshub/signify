@@ -8,7 +8,7 @@ function processInput() {
 
     // Define video recommendations
     const videos = {
-        'hello': 'assets/hello.webm',
+        'hello': 'hello.webm',
         'hi': 'assets/hi.webm',
         'good': 'assets/good-.webm',
         'afternoon': 'assets/afternoon.webm',
