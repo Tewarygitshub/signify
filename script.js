@@ -57,19 +57,16 @@ function processInput() {
     words.forEach(word => {
         if (videos[word]) {
             videoQueue.push(videos[word]);
+        } else {
+            // If no match, play a random video
+            const videoKeys = Object.keys(videos);
+            const randomKey = videoKeys[Math.floor(Math.random() * videoKeys.length)];
+            videoQueue.push(videos[randomKey]);
         }
     });
 
-    // If no matches found
-    if (videoQueue.length === 0) {
-        const videoKeys = Object.keys(videos);
-        const randomKey = videoKeys[Math.floor(Math.random() * videoKeys.length)];
-        videoQueue.push(videos[randomKey]);
-        resultDiv.innerHTML = '<p>No exact matches found. Playing a random video.</p>';
-    }
-
-
     // Start playing videos
+    currentVideoIndex = 0; // Reset index
     playNextVideo(resultDiv);
 }
 
@@ -78,19 +75,22 @@ function playNextVideo(resultDiv) {
         const videoSrc = videoQueue[currentVideoIndex];
         let videoHTML;
 
+        // Create video element for .webm videos
         if (videoSrc.endsWith('.webm')) {
-            // For .webm videos
-            videoHTML = `<p> <video width="350" height="350" controls autoplay muted onended="playNextVideo(resultDiv)">
-                            <source src="${videoSrc}" type="video/webm">
-                            Your browser does not support the video tag.
-                         </video></p>`;
+            videoHTML = `<p>
+                            <video width="350" height="350" controls autoplay muted>
+                                <source src="${videoSrc}" type="video/webm">
+                                Your browser does not support the video tag.
+                            </video>
+                         </p>`;
         } else {
-            // For YouTube links
+            // If it's a YouTube link
             videoHTML = `<p>Video for <strong>${videoSrc}</strong>: <a href="${videoSrc}" target="_blank">${videoSrc}</a></p>`;
         }
 
         resultDiv.innerHTML = videoHTML;
-        
+
+        // Add event listener for video end event
         if (videoSrc.endsWith('.webm')) {
             const videoElement = resultDiv.querySelector('video');
             videoElement.addEventListener('ended', () => {
@@ -98,7 +98,7 @@ function playNextVideo(resultDiv) {
                 playNextVideo(resultDiv);
             });
         } else {
-            // If it's a YouTube link, just advance the index without auto-play
+            // Advance index without autoplay for YouTube links
             currentVideoIndex++;
         }
     } else {
