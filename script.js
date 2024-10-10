@@ -34,10 +34,19 @@ function processInput() {
         'two': 'two.webm',
         'what': 'what.webm',
         'you': 'you.webm',
-        
-        
-        
-        
+         'a': 'a.webm',
+         'an': 'an.webm',
+         'are': 'are.webm',
+         'deaf': 'deaf.webm',
+         'exam': 'exam.webm',
+         'innovation': 'innovation.webm',
+         'into': 'into.webm',
+         'play': 'play.webm',
+         'that': 'that.webm',
+         'this': 'this.webm',
+         'wheelchair': 'wheelchair.webm',
+         'mute': 'mute.webm',
+         'luck': 'luck.webm',
     };
 
     // Split input text into words
