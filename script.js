@@ -47,6 +47,11 @@ function processInput() {
          'wheelchair': 'wheelchair.webm',
          'mute': 'mute.webm',
          'luck': 'luck.webm',
+        'was': 'was.webm',
+        'where': 'where.webm',
+        'of': 'of.webm',
+        'your': 'your.webm',
+        'is': 'is.webm',
     };
 
     // Split input text into words
